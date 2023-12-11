@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
-const postSchema=mongoose.Schema({
+const PostSchema=mongoose.Schema({
     title:String,
     body:String,
     device:String,
     },{
     versionKey:false
 })
-const postModel=mongoose.model("user",postSchema)
+const PostModel=mongoose.model("post",PostSchema)
 
 module.exports={
-    postModel
+    PostModel
 }
