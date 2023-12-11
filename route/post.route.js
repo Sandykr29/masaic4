@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const {auth}=require("../middleware/auth.middleware")
 
 
-postRouter.post("/add",async(req,res)=>{
+postRouter.post("/add",auth,async(req,res)=>{
 try {
     const post=new PostModel(req.body)
     await post.save();
@@ -17,7 +17,7 @@ try {
 })
 
 
-postRouter.patch("/update:postID",async(req,res)=>{
+postRouter.patch("/update:postID",auth,async(req,res)=>{
     const {postID}=req.params
     try {
         const post=await PostModel.findOne({_id:postID})
@@ -32,7 +32,7 @@ postRouter.patch("/update:postID",async(req,res)=>{
     }
 })
 
-postRouter.delete("/update:postID",async(req,res)=>{
+postRouter.delete("/update:postID",auth,async(req,res)=>{
     const {postID}=req.params
     try {
         const post=await PostModel.findOne({_id:postID})
